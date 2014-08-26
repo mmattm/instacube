@@ -16,6 +16,10 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:profile_picture] = nil
+    session[:profile_name] = nil
+    session[:insta_id] = nil
+    #reset_session
     redirect_to root_url, :notice => "Logged out!"
   end
 end

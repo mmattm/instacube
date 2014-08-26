@@ -14,13 +14,17 @@ class UsersController < ApplicationController
 
  		# GET USER ID
  		response = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{@current_user.instagram_username}&access_token=#{SUPER_SECRET_TOKEN}")
+
  		json = JSON.parse(response.body)
     
+     puts "DEBUG"
+     #puts session[:insta_id]
+
  		session[:insta_id] = json["data"][0]["id"]
     session[:profile_picture] = json["data"][0]["profile_picture"]
     session[:profile_name]= json["data"][0]["full_name"]
-    puts session[:insta_id] 
-    puts @profile_picture
+   # puts session[:insta_id] 
+   # puts @profile_picture
  		@results = Instagram.user_recent_media(session[:insta_id], {count: 15})  # 60 appears to be the max
 		#puts @results
 
