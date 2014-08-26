@@ -84,9 +84,9 @@ GEM
       moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
-    mongoid-shell (0.3.0)
+    mongoid-shell (0.2.0)
       i18n
-      mongoid (>= 3.0.0)
+      mongoid
     moped (2.0.0)
       bson (~> 2.2)
       connection_pool (~> 2.0)
@@ -154,7 +154,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
+    turbolinks (2.3.0)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
