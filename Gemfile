@@ -53,3 +53,5 @@ gem "font-awesome-rails"
 gem 'pace-rails'
 
 gem 'rails_12factor', group: :production
+
+gem 'sqlite3'
