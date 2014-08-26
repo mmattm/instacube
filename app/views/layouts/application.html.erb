@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instamongo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Bree+Serif' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <%= csrf_meta_tags %>
+
+  <%= yield :head %>
+</head>
+<body>
+ <%= yield :canvas %>
+<div class="container">
+	<div id="left-nav" class="three columns sidebar">
+		<nav id="user_nav">
+			<h2><%= link_to 'Instacube', root_path %></h2>
+				
+					
+				  <% if current_user %>
+				  	  <div id="profile-bloc">
+					  	  <img alt="profile" width="100" src='<%= session[:profile_picture] %>'>
+					      <h4><%= session[:profile_name] %></h4>
+				 	 </div>
+				     <p>
+				    <% #link_to 'Profile page', { :controller => :users, :action => 'show' } %>
+				    <p><i class="fa fa-instagram"></i> <%= link_to "Profile", current_user, :class => is_active?("show") %><br /> 
+				   	   <i class="fa fa-tags"></i> <%= link_to "Tags", [current_user, :tags], :class => is_active?("index") %></p>
+				    <br />
+					</p>
+				    <br />
+
+				    <p>
+				    <%= link_to "Preferences", edit_user_preferences_path(current_user), :class => is_active?("edit_preferences") %>
+				    <br />
+				    <%= link_to "Edit my profile", edit_user_path(current_user), :class => is_active?("edit") %>
+				    <br />
+				    <%= link_to "Log out", log_out_path %>
+					</p>
+
+				    <p>
+				      ID:
+				      <%= session[:insta_id] %>
+				    </p>
+				  <% else %>
+				    <%= link_to "Sign up", sign_up_path %> or
+				    <%= link_to "log in", log_in_path %>
+				  <% end %>
+		</nav>
+	</div>
+	
+	<div class="twelve columns offset-by-one content">
+
+	<div class="notice">
+	<% flash.each do |name, msg| %>
+
+	  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
+	</div>
+
+	<%= yield %>
+	</div>
+	
+</div>
+
+</body>
+</html>

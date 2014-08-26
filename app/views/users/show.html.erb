@@ -1,0 +1,20 @@
+<h2>Last <%= @results.count %> uploads</h2>
+<ul class="grid cs-style-1">
+  	<% @results.each do |media| %>
+  	<li>
+  	    <figure>
+       	<%= image_tag("#{media.images.low_resolution.url}", :border => 0) %>
+       		<figcaption>
+       		    <h3><%= 
+       		    media.user.full_name 
+       		    %></h3>
+       		    <span><%= media.user.id %></span>
+       		    <%= link_to "Generate it!", :action => 'image_detail', :controller => 'users', :image => media.images.low_resolution.url %>
+       		</figcaption>
+   		</figure>
+   	</li>
+    <% end %>
+</ul>
+
+
+

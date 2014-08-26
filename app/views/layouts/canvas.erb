@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instamongo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Bree+Serif' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <%= csrf_meta_tags %>
+
+  <%= yield :head %>
+</head>
+<body>
+<div id="controls">
+	<div class="backtoprofile"> <%= link_to 'Back to profile', current_user %></div>
+	<div class="saveasimage"><a id="btnSave" href="#"><i class="fa fa-save"></i> Save as an image</a></div>
+	<div class="preferences"><%= link_to 'Output Preference', edit_user_preferences_path(current_user) %> <%= current_user.pref_nbr %></div>
+</div>
+<%= yield :canvas %>
+<%= yield %>
+
+</body>
+</html>

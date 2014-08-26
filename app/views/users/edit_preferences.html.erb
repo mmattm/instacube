@@ -1,0 +1,10 @@
+<h2>Edit my preferences</h2>
+<%= form_for(current_user) do |f| %>
+<div class="field">
+    <%= f.label :pref_nbr, 'Ammount of squares' %><br>
+    <%= f.number_field :pref_nbr  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

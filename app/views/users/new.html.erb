@@ -1,0 +1,34 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    You don't have an account ?
+    <a href="http://www.huffingtonpost.com/2014/04/14/photographers-on-instagram_n_5135368.html" target="blank">Find one here</a>
+    <%= f.label :instagram_username %><br />
+    <%= f.text_field :instagram_username %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <%= f.submit %>
+<% end %>

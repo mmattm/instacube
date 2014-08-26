@@ -1,0 +1,42 @@
+<h2>Explore by tags</h2>
+
+<table>
+  
+  
+  <tbody>
+
+    <% @tags.each do |tag| %>
+      <tr>
+
+        <td><i class="fa fa-tags"></i><%= link_to tag.name, edit_user_tag_path(@user, tag) %></td>
+        <td><i class="fa fa-trash-o"></i> <%= link_to 'remove', [@user, tag], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<i class="fa fa-plus"></i> <%= link_to 'Add a tag', new_user_tag_path(@user) %>
+
+<% if @tags.present? %>
+<ul class="grid cs-style-1">
+  	<% @results.each do |media| %>
+  	<li>
+  	    <figure>
+  	    <% media %>
+       	<%= image_tag("#{media.images.low_resolution.url}", :border => 0) %>
+       		<figcaption>
+       		    <h3><%= 
+       		    media.user.full_name 
+       		    %></h3>
+       		    <span><%= media.user.id %></span>
+       		    <%= link_to "Generate it!", :action => 'image_detail', :controller => 'users', :image => media.images.low_resolution.url %>
+       		</figcaption>
+   		</figure>
+   	</li>
+    <% end %>
+</ul>
+<% else %>
+<p>No tags for the moment</p>
+<% end %>
