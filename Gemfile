@@ -39,9 +39,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'mongo'
-gem 'bson_ext'
-gem 'mongo_mapper'
+#gem 'mongo'
+#gem 'bson_ext'
+#gem 'mongo_mapper'
 gem 'mongoid'
 gem 'instagram'
 gem 'mongoid-shell'
