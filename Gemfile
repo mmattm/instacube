@@ -42,7 +42,7 @@ gem 'spring',        group: :development
 gem 'mongo'
 gem 'bson_ext'
 gem 'mongo_mapper'
-gem 'mongoid', :git => "git@github.com:mongoid/mongoid.git"
+gem 'mongoid'
 gem 'instagram'
 gem 'mongoid-shell'
 gem 'bcrypt', :require => 'bcrypt'
