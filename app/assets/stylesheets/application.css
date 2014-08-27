@@ -19,7 +19,7 @@
 
 html, body {
 	/*background: url("../images/pixel_weave.png");*/
-	background-image: url(<%= asset_path("cubes.png") %>);
+	background-image: url('<%= asset_path("cubes.png") %>');
 	padding-bottom: 60px;
 }
 table td {
