@@ -14,11 +14,12 @@
  *= require_self
  *= require pace/pace-theme-flat-top
  *= require font-awesome
+ //= depend_on_asset "cubes.png"
  */
 
 html, body {
 	/*background: url("../images/pixel_weave.png");*/
-	background-image: url(/assets/cubes.png);
+	background-image: url(<%= asset_path("cubes.png") %>);
 	padding-bottom: 60px;
 }
 table td {
