@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
- 		# GET USER ID
+    # GET USER ID
     response = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{@current_user.instagram_username}&access_token=#{SUPER_SECRET_TOKEN}")
     json = JSON.parse(response.body)
 
@@ -23,22 +23,22 @@ class UsersController < ApplicationController
   end
 
   def image_detail 
- 	  # recuperation de l'URL
- 	  img_param = params[:image]
+    # recuperation de l'URL
+    img_param = params[:image]
 
- 	  # création de l'url avec l'id de l'user
- 	  img_url = "public/assets/img_uploads/#{current_user.id}.png"
+    # création de l'url avec l'id de l'user
+    img_url = "public/assets/img_uploads/#{current_user.id}.png"
 
- 	  #  stock le fichier temp sur le serveur 
- 	  open(img_url, 'wb') do |file|
+    #  stock le fichier temp sur le serveur 
+    open(img_url, 'wb') do |file|
        file << open(img_param).read
      end
 
- 	  # Encodage en baseB4
- 	  @img_base64 = Base64.encode64(File.open(img_url, "rb").read)
- 	end
+    # Encodage en baseB4
+    @img_base64 = Base64.encode64(File.open(img_url, "rb").read)
+  end
 
- 	def create
+  def create
     @user = User.new(user_params)
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
@@ -71,17 +71,17 @@ class UsersController < ApplicationController
   private 
   
   def resolve_layout
-   case action_name
+    case action_name
 
-   when "image_detail"
-     "canvas"
-   else
-     "application"
-   end
+    when "image_detail"
+      "canvas"
+    else
+      "application"
+    end
   end
 
- def set_user
- end
+  def set_user
+  end
 
   def verify_owner
     if current_user.nil? 
