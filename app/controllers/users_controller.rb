@@ -12,30 +12,30 @@ class UsersController < ApplicationController
 
   def show
  		# GET USER ID
- 		response = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{@current_user.instagram_username}&access_token=#{SUPER_SECRET_TOKEN}")
- 		json = JSON.parse(response.body)
+    response = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{@current_user.instagram_username}&access_token=#{SUPER_SECRET_TOKEN}")
+    json = JSON.parse(response.body)
 
     session[:insta_id] = json["data"][0]["id"]
     session[:profile_picture] = json["data"][0]["profile_picture"]
     session[:profile_name]= json["data"][0]["full_name"]
 
- 		@results = Instagram.user_recent_media(session[:insta_id], {count: 15})  # 60 appears to be the max
+    @results = Instagram.user_recent_media(session[:insta_id], {count: 15})  # 60 appears to be the max
   end
 
   def image_detail 
- 		# recuperation de l'URL
- 		img_param = params[:image]
+ 	  # recuperation de l'URL
+ 	  img_param = params[:image]
 
- 		# création de l'url avec l'id de l'user
- 		img_url = "public/assets/img_uploads/#{current_user.id}.png"
+ 	  # création de l'url avec l'id de l'user
+ 	  img_url = "public/assets/img_uploads/#{current_user.id}.png"
 
- 		#  stock le fichier temp sur le serveur 
- 		open(img_url, 'wb') do |file|
+ 	  #  stock le fichier temp sur le serveur 
+ 	  open(img_url, 'wb') do |file|
        file << open(img_param).read
      end
 
- 		# Encodage en baseB4
- 		@img_base64 = Base64.encode64(File.open(img_url, "rb").read)
+ 	  # Encodage en baseB4
+ 	  @img_base64 = Base64.encode64(File.open(img_url, "rb").read)
  	end
 
  	def create
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   def edit_preferences
     respond_to do |format|
-      format.html { render :edit_preferences }
+    format.html { render :edit_preferences }
     end
   end
 
